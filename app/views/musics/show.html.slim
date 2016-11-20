@@ -1,0 +1,10 @@
+br
+.jumbotron
+  h3 = @music.artist
+  h1 = @music.album
+
+br
+h3 All messages
+= render "music_messages/index"
+br
+= link_to 'New Messages', new_music_music_message_path(@music), class: "btn btn-primary"

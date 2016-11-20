@@ -1,0 +1,13 @@
+br
+.jumbotron
+  h3 = @car.brand
+  h1 = @car.model
+br
+== render "form",
+  subject: @subject,
+  content: @content,
+  messageble: @messageble,
+  personas: @personas,
+  controller: "car_messages"
+br
+= render "recipients", messageble: @messageble, recipients: @recipients

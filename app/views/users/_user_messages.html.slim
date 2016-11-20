@@ -1,0 +1,22 @@
+table.table.table-bordered
+  thead.thead-inverse
+    tr
+      th Date : Time
+      th Subject
+      th Author
+      th Replies
+      th Read
+      th
+  tbody
+    - messages.each do |message|
+      tr
+        td = l(message.updated_at, format: :short)
+        td
+          = message.messageable_type
+          '&nbsp;:&nbsp;
+          = message.subject
+        td = message.author_name
+        td = message.reply_count
+        td = message.read_by?(current_user)
+        td.text-xs-right
+          = link_to "Show", message.messageable.message_path(message.id), class: "btn btn-secondary"

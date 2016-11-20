@@ -1,0 +1,12 @@
+br
+.jumbotron
+  h3 = @car.brand
+  h1 = @car.model
+
+
+
+br
+h3 All messages
+= render "car_messages/index"
+br
+= link_to 'New Messages', new_car_car_message_path(@car), class: "btn btn-primary"

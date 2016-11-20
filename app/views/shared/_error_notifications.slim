@@ -1,0 +1,6 @@
+- if model_instance.errors.any?
+  .alert.alert-danger
+    h4= "#{pluralize(model_instance.errors.count, "error")} prohibited this subject from being saved:"
+    ul
+      - model_instance.errors.full_messages.each do |msg|
+        li= msg

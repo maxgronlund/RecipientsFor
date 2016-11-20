@@ -1,0 +1,71 @@
+ol.breadcrumb
+  li.breadcrumb-item = link_to "Cars", cars_path
+  li.breadcrumb-item = link_to [@car.brand, @car.model].join(" "), car_path(@car)
+
+
+.jumbotron
+  h3 = @car.brand
+  h1 = @car.model
+br
+.row
+  .col-sm-3
+    h4 Recipients
+    table.table.table-bordered
+      thead.thead-inverse
+        tr
+          th Name
+          th Read
+      tbody
+        - @readers.each do |reader|
+          tr
+            td = reader[:name]
+            td = reader[:read] ? "Yes" : "No"
+
+
+
+  .col-sm-9
+    h4 Message
+    .card
+      .card-block
+        h5.card-title = @subject.subject
+        .card-subtitle.text-muted
+          = l(@subject.created_at, format: :short)
+          '&nbsp;&nbsp;
+          'Author:&nbsp;
+          = @subject.author_name
+        .card-text = simple_format @subject.content
+
+    h4 Reply
+    = render "shared/notice", notice: notice
+    = simple_form_for @content do |f|
+      == render "shared/error_notifications", model_instance: @content
+      .field
+        = f.input :content, input_html: { rows: 12 }
+        = f.hidden_field :return_path, value: session[:request_url] || request.url
+        = f.hidden_field :subject_id, value: @subject.id
+
+        = f.submit 'Reply', class: "btn btn-primary"
+
+    - if @subject.reply_count > 0
+      hr
+      h4 Replies
+      - @subject.replies.each do |reply|
+        - unless reply.created_at.nil?
+          .card
+            .card-block
+              .card-subtitle.text-muted
+                = l(reply.created_at, format: :short)
+                '&nbsp;&nbsp;
+                'Author:&nbsp;
+                = reply.author_name
+              .card-text = simple_format reply.content
+
+
+
+
+
+- if session[:request_url]
+  javascript:
+    history.pushState({}, null, "#{session[:request_url]}");
+  - session[:request_url] = nil
+

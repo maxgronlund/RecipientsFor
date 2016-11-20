@@ -1,0 +1,23 @@
+nav.navbar.navbar-light.bg-faded
+
+  = link_to "recipients_for", root_path, class: "navbar-brand"
+  ul.nav.navbar-nav
+    li.nav-item
+      = link_to "Cars", cars_path, class: "nav-link #{'active' if request.url.include?('car')}"
+
+    li.nav-item
+      = link_to "Music", musics_path, class: "nav-link #{'active' if request.url.include?('music')}"
+    li.nav-item.dropdown
+      a#supportedContentDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"  Select user
+      .dropdown-menu aria-labelledby="supportedContentDropdown"
+        - @users.each do |user|
+          = link_to user.name, user_path(user, redirect_to: request.url), class: "dropdown-item"
+  ul.nav.navbar.nav.float-lg-right
+    li.nav-item
+    li.nav-item
+      = link_to current_user.name, current_user
+      - if count = unread_messages_count
+        - if count > 0
+          '&nbsp;
+          .tag.tag-danger
+            = count

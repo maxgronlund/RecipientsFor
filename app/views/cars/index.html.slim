@@ -1,0 +1,20 @@
+h1 Cars
+table.table.table-bordered
+  thead.thead-inverse
+    tr
+      th Brand
+      th Model
+      th Messages
+      th
+  tbody
+    - @cars.each do |car|
+      tr
+        td = link_to car.brand, car
+        td = car.model
+        td = car.message_count
+        td
+          .text-xs-right
+            = link_to 'Show', car , class: "btn btn-secondary"
+
+
+

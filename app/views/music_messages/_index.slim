@@ -1,0 +1,20 @@
+table.table.table-bordered
+  thead.thead-inverse
+    tr
+      th Subject
+      th Author
+      th Replies
+      th Read
+      th
+  tbody
+    - @subjects.each do |subject|
+      tr
+        td = subject.subject
+        td = subject.author_name
+        td = subject.reply_count
+        td = subject.read_by?(current_user)
+        td.text-xs-right
+          = link_to "Show", music_music_message_path(@music, subject.id), class: "btn btn-secondary"
+
+
+

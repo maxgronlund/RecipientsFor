@@ -1,0 +1,13 @@
+br
+.jumbotron
+  h3 You are logged in as
+  h1 = @user.name
+  br
+  = link_to "Back", @redirect_to, class: "btn btn-secondary" if @redirect_to
+
+
+h3 Unread messages
+= render "users/user_messages", messages: @unread_messages
+
+h3 Read messages
+= render "users/user_messages", messages: @read_messages

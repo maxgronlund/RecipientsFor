@@ -1,0 +1,19 @@
+h1 Music
+table.table.table-bordered
+  thead.thead-inverse
+    tr
+      th Artist
+      th Album
+      th Messages
+      th
+  tbody
+    - @musics.each do |music|
+      tr
+        td = link_to music.artist, music
+        td = music.album
+        td = music.message_count
+        td
+          .text-xs-right
+            = link_to 'Show', music , class: "btn btn-secondary"
+
+

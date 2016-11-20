@@ -1,0 +1,52 @@
+ol.breadcrumb
+  li.breadcrumb-item = link_to "Music", musics_path
+  li.breadcrumb-item = link_to [@music.artist, @music.album].join(" "), music_path(@music)
+
+
+.jumbotron
+  h3 = @music.artist
+  h1 = @music.album
+br
+.card
+  .card-block
+    h4.card-title = @subject.subject
+    .card-subtitle.text-muted
+      = l(@subject.created_at, format: :short)
+      '&nbsp;&nbsp;
+      'Author:&nbsp;
+      = @subject.author_name
+    .card-text = simple_format @subject.content
+
+
+- if @subject.reply_count > 0
+  h4 Replies
+  - @subject.contents[1..-1].each do |content|
+    - unless content.created_at.nil?
+      .card
+        .card-block
+          .card-subtitle.text-muted
+            = l(content.created_at, format: :short)
+            '&nbsp;&nbsp;
+            'Author:&nbsp;
+            = content.author_name
+          .card-text = simple_format content.content
+
+h4 Reply
+= render "shared/notice", notice: notice
+= simple_form_for @content do |f|
+  == render "shared/error_notifications", model_instance: @content
+  .field
+    = f.input :content, input_html: { rows: 12 }
+    = f.hidden_field :return_path, value: session[:request_url] || request.url
+    = f.hidden_field :subject_id, value: @subject.id
+
+    = f.submit 'Reply', class: "btn btn-primary"
+
+
+
+- if session[:request_url]
+  javascript:
+    history.pushState({}, null, "#{session[:request_url]}");
+  - session[:request_url] = nil
+
+
