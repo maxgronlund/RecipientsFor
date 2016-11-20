@@ -8,7 +8,7 @@ nav.navbar.navbar-light.bg-faded
     li.nav-item
       = link_to "Music", musics_path, class: "nav-link #{'active' if request.url.include?('music')}"
     li.nav-item.dropdown
-      a#supportedContentDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"  Select user
+      a#supportedContentDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"  Users
       .dropdown-menu aria-labelledby="supportedContentDropdown"
         - @users.each do |user|
           = link_to user.name, user_path(user, redirect_to: request.url), class: "dropdown-item"
