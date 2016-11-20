@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161119210211) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cars", force: :cascade do |t|
     t.string   "brand"
     t.string   "model"
@@ -36,8 +39,8 @@ ActiveRecord::Schema.define(version: 20161119210211) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "rf_contents", ["authorable_type", "authorable_id"], name: "index_rf_contents_on_authorable_type_and_authorable_id"
-  add_index "rf_contents", ["subject_id"], name: "index_rf_contents_on_subject_id"
+  add_index "rf_contents", ["authorable_type", "authorable_id"], name: "index_rf_contents_on_authorable_type_and_authorable_id", using: :btree
+  add_index "rf_contents", ["subject_id"], name: "index_rf_contents_on_subject_id", using: :btree
 
   create_table "rf_reader_infos", force: :cascade do |t|
     t.boolean  "read"
@@ -53,9 +56,9 @@ ActiveRecord::Schema.define(version: 20161119210211) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "rf_reader_infos", ["recipient_id"], name: "index_rf_reader_infos_on_recipient_id"
-  add_index "rf_reader_infos", ["reciveable_type", "reciveable_id"], name: "index_rf_reader_infos_on_reciveable_type_and_reciveable_id"
-  add_index "rf_reader_infos", ["subject_id"], name: "index_rf_reader_infos_on_subject_id"
+  add_index "rf_reader_infos", ["recipient_id"], name: "index_rf_reader_infos_on_recipient_id", using: :btree
+  add_index "rf_reader_infos", ["reciveable_type", "reciveable_id"], name: "index_rf_reader_infos_on_reciveable_type_and_reciveable_id", using: :btree
+  add_index "rf_reader_infos", ["subject_id"], name: "index_rf_reader_infos_on_subject_id", using: :btree
 
   create_table "rf_recipients", force: :cascade do |t|
     t.string   "messageble_type"
@@ -68,8 +71,8 @@ ActiveRecord::Schema.define(version: 20161119210211) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "rf_recipients", ["messageble_type", "messageble_id"], name: "index_rf_recipients_on_messageble_type_and_messageble_id"
-  add_index "rf_recipients", ["reciveable_type", "reciveable_id"], name: "index_rf_recipients_on_reciveable_type_and_reciveable_id"
+  add_index "rf_recipients", ["messageble_type", "messageble_id"], name: "index_rf_recipients_on_messageble_type_and_messageble_id", using: :btree
+  add_index "rf_recipients", ["reciveable_type", "reciveable_id"], name: "index_rf_recipients_on_reciveable_type_and_reciveable_id", using: :btree
 
   create_table "rf_subjects", force: :cascade do |t|
     t.string   "subject"
@@ -85,7 +88,7 @@ ActiveRecord::Schema.define(version: 20161119210211) do
     t.datetime "attachment_updated_at"
   end
 
-  add_index "rf_subjects", ["messageable_type", "messageable_id"], name: "index_rf_subjects_on_messageable_type_and_messageable_id"
+  add_index "rf_subjects", ["messageable_type", "messageable_id"], name: "index_rf_subjects_on_messageable_type_and_messageable_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

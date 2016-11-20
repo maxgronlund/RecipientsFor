@@ -16,4 +16,3 @@
 //= require_tree .
 //= require recipients_for
 //= require bootstrap
-//= require recipients_for
