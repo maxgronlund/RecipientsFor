@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20161119210211) do
   end
 
   create_table "rf_contents", force: :cascade do |t|
-    t.text     "content"
+    t.text     "body"
     t.integer  "subject_id"
     t.integer  "authorable_id"
     t.string   "authorable_type"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20161119210211) do
   add_index "rf_recipients", ["reciveable_type", "reciveable_id"], name: "index_rf_recipients_on_reciveable_type_and_reciveable_id", using: :btree
 
   create_table "rf_subjects", force: :cascade do |t|
-    t.string   "subject"
+    t.string   "title"
     t.integer  "contents_count",          default: 0
     t.integer  "reader_infos_count",      default: 0
     t.string   "messageable_type"

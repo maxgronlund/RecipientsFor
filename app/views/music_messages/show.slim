@@ -9,13 +9,13 @@ ol.breadcrumb
 br
 .card
   .card-block
-    h4.card-title = @subject.subject
+    h4.card-title = @subject.title
     .card-subtitle.text-muted
       = l(@subject.created_at, format: :short)
       '&nbsp;&nbsp;
       'Author:&nbsp;
       = @subject.author_name
-    .card-text = simple_format @subject.content
+    .card-text = simple_format @subject.title
 
 
 - if @subject.reply_count > 0
@@ -29,16 +29,19 @@ br
             '&nbsp;&nbsp;
             'Author:&nbsp;
             = content.author_name
-          .card-text = simple_format content.content
+          .card-text = simple_format content.body
 
 h4 Reply
 = render "shared/notice", notice: notice
 = simple_form_for @content do |f|
   == render "shared/error_notifications", model_instance: @content
   .field
-    = f.input :content, input_html: { rows: 12 }
-    = f.hidden_field :return_path, value: session[:request_url] || request.url
+    = f.input :body, input_html: { rows: 12 }
     = f.hidden_field :subject_id, value: @subject.id
+
+    = f.hidden_field :return_path, value: session[:request_url] || request.url
+    = f.hidden_field :messageble_var_name, value: :music
+    = f.hidden_field :render_error_path, value: "/music_messages/show"
 
     = f.submit 'Reply', class: "btn btn-primary"
 

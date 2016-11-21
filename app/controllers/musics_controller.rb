@@ -8,7 +8,8 @@ class MusicsController < ApplicationController
   end
 
   def show
-    all_messageble_messages(@music)
+    #all_messageble_messages(@music)
+    @messages = @music.all_messages
   end
 
 

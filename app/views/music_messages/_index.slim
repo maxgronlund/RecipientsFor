@@ -7,14 +7,14 @@ table.table.table-bordered
       th Read
       th
   tbody
-    - @subjects.each do |subject|
+    - @messages.each do |message|
       tr
-        td = subject.subject
-        td = subject.author_name
-        td = subject.reply_count
-        td = subject.read_by?(current_user)
+        td = message.title
+        td = message.author_name
+        td = message.reply_count
+        td = message.read_by?(current_user)
         td.text-xs-right
-          = link_to "Show", music_music_message_path(@music, subject.id), class: "btn btn-secondary"
+          = link_to "Show", music_music_message_path(@music, message.id), class: "btn btn-secondary"
 
 
 

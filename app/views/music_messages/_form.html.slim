@@ -10,10 +10,10 @@
   = f.hidden_field :messageable_type, value: messageble.class.name
   = f.hidden_field :messageable_id, value: messageble.id
   /= f.hidden_field :return_path, value: request_url
-  = f.input :subject
+  = f.input :title
   /= f.input :attachment, as: :file
   = f.simple_fields_for :contents, content do |c|
-    = c.input :content, input_html: { rows: 12 }
+    = c.input :body, input_html: { rows: 12 }
 
   .actions
     = link_to "Cancel", music_path(@music), class: "btn btn-secondary"

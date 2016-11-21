@@ -23,8 +23,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'recipients_for', :git => 'git://github.com/maxgronlund/recipients_for'
-#gem 'recipients_for', path: "../recipients_for"
+# gem 'recipients_for', :git => 'git://github.com/maxgronlund/recipients_for'
+gem 'recipients_for', path: "../recipients_for"
 
 gem 'slim'
 gem 'simple_form'

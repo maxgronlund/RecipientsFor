@@ -12,7 +12,8 @@ class CarsController < ApplicationController
   # GET /cars/1
   # GET /cars/1.json
   def show
-    all_messageble_messages(@car)
+    #all_messageble_messages(@car)
+    @messages = @car.all_messages
   end
 
 

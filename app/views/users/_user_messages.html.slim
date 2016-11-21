@@ -14,7 +14,7 @@ table.table.table-bordered
         td
           = message.messageable_type
           '&nbsp;:&nbsp;
-          = message.subject
+          = message.title
         td = message.author_name
         td = message.reply_count
         td = message.read_by?(current_user)
