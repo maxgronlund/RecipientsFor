@@ -19,8 +19,8 @@ br
         tbody
           - @readers.each do |reader|
             tr
-              td = reader[:name]
-              td = reader[:read] ? "Yes" : "No"
+              td = reader.name
+              td = reader.read ? "Yes" : "No"
 
 
 

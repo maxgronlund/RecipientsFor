@@ -25,14 +25,12 @@ class MusicMessagesController < ApplicationController
     end
   end
 
-  #def index
-  #end
-
   def show
     @music = Music.find(params[:music_id])
     show_message(params[:id], current_user)
     reciveables = RecipientsFor::Recipient.reciveables(@music)
-    build_reader_infos(@subject, reciveables)
+    #build_reader_infos(@subject, reciveables)
+    @readers = @music.all_readers(@subject)
   end
 
   private

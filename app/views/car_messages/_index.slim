@@ -1,6 +1,7 @@
 table.table.table-bordered
   thead.thead-inverse
     tr
+      th Date : Time
       th Subject
       th Author
       th Replies
@@ -9,6 +10,7 @@ table.table.table-bordered
   tbody
     - @messages.each do |message|
       tr
+        td = l(message.updated_at, format: :short)
         td = message.title
         td = message.author_name
         td = message.reply_count

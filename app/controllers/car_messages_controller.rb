@@ -32,7 +32,7 @@ class CarMessagesController < ApplicationController
     @car = Car.find(params[:car_id])
     show_message(params[:id], current_user)
     reciveables = RecipientsFor::Recipient.reciveables(@car)
-    build_reader_infos(@subject, reciveables)
+    @readers = @car.all_readers(@subject)
   end
 
   private

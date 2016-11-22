@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/maxgronlund/recipients_for
-  revision: 1645393693930e264230ac93257076e553709dd2
+  revision: 6cac9a5c8350743802ad65c0a0c83e99d24aaf73
   specs:
-    recipients_for (0.1.21)
+    recipients_for (0.1.22)
       rails (>= 3.1)
 
 GEM

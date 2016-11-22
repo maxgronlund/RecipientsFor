@@ -19,8 +19,8 @@ br
         tbody
           - @readers.each do |reader|
             tr
-              td = reader[:name]
-              td = reader[:read] ? "Yes" : "No"
+              td = reader.name
+              td = reader.read ? "Yes" : "No"
 
 
 
@@ -51,6 +51,7 @@ br
 
     h4 Reply
     = render "shared/notice", notice: notice
+
     = simple_form_for @content do |f|
       == render "shared/error_notifications", model_instance: @content
       .field
