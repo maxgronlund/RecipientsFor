@@ -1,5 +1,5 @@
 class Music < ActiveRecord::Base
-  include RecipientsFor::Messages
+  act_as_messageble
 
   def message_path(message_id)
     "/musics/#{id}/music_messages/#{message_id}"

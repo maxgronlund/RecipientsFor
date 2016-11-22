@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'recipients_for', :git => 'git://github.com/maxgronlund/recipients_for'
-# gem 'recipients_for', path: "../recipients_for"
+#gem 'recipients_for', path: "../recipients_for"
 
 gem 'slim'
 gem 'simple_form'

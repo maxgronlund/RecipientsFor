@@ -1,5 +1,5 @@
 class Car < ActiveRecord::Base
-  include RecipientsFor::Messages
+  act_as_messageble
 
   def message_path(car_id)
     "/cars/#{id}/car_messages/#{car_id}"
