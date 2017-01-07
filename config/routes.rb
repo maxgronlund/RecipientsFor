@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  resources :messages, only: [:show]
   resources :musics, only: [:index, :show] do
     resources :music_messages
   end
